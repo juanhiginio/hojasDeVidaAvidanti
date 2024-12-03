@@ -1,0 +1,168 @@
+*{
+    font-family: 'public-sans-bold'; 
+}
+
+body{
+    background-image: url('../assets/blob-scene-haikei.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover ;
+}
+
+#avidanti{
+    height: 73px;
+    margin-left: 2%;
+}
+
+
+nav,#fluid{
+    display: flex;
+    justify-content:space-between;
+    gap: 5%;
+}
+
+.nav-item {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.contenedor-informacion-usuario {
+    display: flex;
+}
+
+.personal-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    text-align: center;
+}
+
+.contenedor-informacion {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
+
+#name{
+    font-size: 13px;
+}
+
+#rol{
+    font-size: 10px;
+    font-weight: bold;
+}
+
+#input-search {
+    padding: 10px 40px 10px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;;
+}
+
+#search {
+    color: #888;
+    font-size: 18px;
+    text-decoration: none;
+    width: 400px;
+    height: 45px;
+    margin: 0 auto;
+}
+
+.navbar-expand-lg .navbar-collapse {
+    justify-content: end;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    background-color: #cbdcefa9;
+    transition: background-color 0.5s ease;
+}
+        
+.navbar:hover {
+    background-color: #cbdcef; 
+}
+.nav-link {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+        
+.nav-link:hover {
+    transform: scale(1.1); 
+}
+
+
+.container-data {
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;    
+    height: auto;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    border-radius: 200%;
+    padding: 5px;
+    filter: drop-shadow(5px 3px 5px #33337451);
+}
+
+.contenedor-input {
+    width: 100%;
+    height: auto;
+    margin-top: 1.5%;
+}
+
+hr {
+    height: 4.5px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+/* CSS TABLE DASHBOARD */
+table{
+    text-align: center;
+}
+#numero{
+    width: 65px;
+}
+
+.table th, .table td {
+    margin-top: 500px;
+    border: 2px solid #ffffff90;
+  }
+
+thead{
+    background-color: #488ad56d;
+}
+
+/*Boton editar - Boton imprimir tabla modal*/
+.boton-editar {
+    background-color: #488ad56d;
+}
+
+.boton-imprimir {
+    background-color: #488ad56d;
+}   
+
+.boton-editar:hover {
+    background-color: #488ad5b5;
+    border: 0.5px rgb(10, 10, 68);
+}
+
+.boton-imprimir:hover {
+    background-color: #488ad5b5;
+    border: 0.5px rgb(10, 10, 68);
+}   
+
+.titulo-hdv {
+    font-weight: bold;
+}
