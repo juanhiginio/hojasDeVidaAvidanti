@@ -7,7 +7,11 @@ $username = $_POST['user'];
 $password = $_POST['password'];
 
 try {
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE usuario = :username");
+    $stmt = $conn->prepare("SELECT u.id_usuario, u.usuario, u.nombre, u.contrasena, r.nombre as rol 
+                            FROM usuarios u 
+                            INNER JOIN roles r ON u.id_rol = r.id_rol 
+                            WHERE u.usuario = :username
+                        ");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
 
@@ -19,7 +23,7 @@ try {
             $_SESSION['id'] = $user['id_usuario'];
             $_SESSION['username'] = $user['usuario'];
             $_SESSION['name'] = $user['nombre'];
-            $_SESSION['rol'] = $user['id_rol'];
+            $_SESSION['rol'] = $user['rol'];
 
             echo "success";
         } else {

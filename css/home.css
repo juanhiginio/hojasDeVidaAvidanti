@@ -165,4 +165,53 @@ thead{
 
 .titulo-hdv {
     font-weight: bold;
+    background-color: black;
+    color: white;
+}
+
+.negrilla-titulo {
+    font-weight: bold;
+    background-color: rgba(128, 128, 128, 0.532);
+    color: white;
+}
+
+.input{
+    width: 30%;
+    padding: 5px 5px 5px 15px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#fecha{
+    width: 30%;
+    height: 30%;
+    padding: 5px;
+    border: 20px rgb(red, green, blue);
+    border-radius: 20px;
+
+}
+
+#problema,#diagnostico,#solucion,#observaciones{
+    width: 40%;
+    height: 30%;
+    padding: 5px;
+    border-radius: 10px;
+}
+#print:hover{
+    background-color: #488ad5b5;
+    border: 0.5px rgb(10, 10, 68);
+    
+}
+
+#print{
+    background-color: #488ad56d;
+    border-radius: 5px;
+    border-color: #0dcaf043;
+    width: 45px;
+    height: 40px;
+}
+
+.hidden {
+    display: none; /* Ocultar elementos */
 }

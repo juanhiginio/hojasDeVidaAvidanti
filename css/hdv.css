@@ -1,0 +1,38 @@
+*{
+    font-family: 'public-sans-bold';
+}
+
+table.cb-tableizer {     		
+    font-size: 12px;     		    		
+    font-family:Arial, Helvetica, sans-serif;   	
+}      	
+.cb-tableizer td {     		
+    padding: 4px;     		
+    margin: 3px;     		
+    border: 1px solid #000000;     	
+}     	
+.cb-tableizer th {     		
+    background-color:#000000;      		
+    color: #000000;     		
+    font-weight: bold;     	
+}    
+img{
+    width: 100%;
+    height: 5rem;
+}
+.titulo-hdv {
+    background-color: #3680a4;
+    color: white;
+    text-align: center; 
+    font-weight: bold;
+    font-size: 10px;    
+    padding: 10px;      
+}
+.negrilla-titulo{
+    background-color: #367fa45b;
+}
+
+.encabezado {
+    margin-bottom: 15px;
+}
+
