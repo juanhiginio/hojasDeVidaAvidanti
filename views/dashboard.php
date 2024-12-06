@@ -12,26 +12,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<link rel="stylesheet" href="../css/home.css">
-
-	<style type="text/css">
-		table.cb-tableizer {
-			font-size: 12px;
-			border: 1px solid #CCC;
-			font-family: Arial, Helvetica, sans-serif;
-		}
-
-		.cb-tableizer td {
-			padding: 4px;
-			margin: 3px;
-			border: 1px solid #CCC;
-		}
-
-		.cb-tableizer th {
-			background-color: #C1CCAF;
-			color: #FFF;
-			font-weight: bold;
-		}
-	</style>
+	<link rel="stylesheet" href="../css/hdv.css">
 	<title>Buscar por serial</title>
 </head>
 
@@ -44,9 +25,12 @@ if (session_status() === PHP_SESSION_NONE) {
 					<ul class="navbar-nav">
 						<div class="contenedor-informacion">
 							<div class="contenedor-informacion-usuario">
+
 								<li class="nav-item">
 									<div class="image-container">
-										<img src="../assets/iconUser.svg" alt="" id="img-person">
+										<img src="../assets/iconUser.svg" alt="" style="
+											margin-right: 20px;
+										">
 									</div>
 								</li>
 								<li class="nav-item">
@@ -63,7 +47,19 @@ if (session_status() === PHP_SESSION_NONE) {
 											echo $rolUsuario
 											?>
 										</label>
+										<?php
+										$rolUsuario = $_SESSION['rol'];
+										if ($rolUsuario==='Administrador' ) {
+											echo '<div >
+												<a href="register.php" id="solicitar" style="
+													color: black;
+    												font-size: smaller;
+												">Crear Cuenta</a>
+											</div>'	;		
+										}
+								?>
 									</div>
+
 								</li>
 							</div>
 							<li class="nav-item">
@@ -76,13 +72,13 @@ if (session_status() === PHP_SESSION_NONE) {
 		</nav>
 
 		<hr>
-
 		<div class="container-data">
-
 			<div class="contenedor-input">
 				<div class="input-group mb-3" id="search">
 					<input type="text" class="form-control" placeholder="Ingresa el Serial..." aria-label="Ingresa el Serial..." aria-describedby="button-addon2">
-					<button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+					<button class="btn btn-outline-secondary" type="button" id="button-addon2">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
 				</div>
 			</div>
 
@@ -94,6 +90,8 @@ if (session_status() === PHP_SESSION_NONE) {
 						<th scope="col">Marca</th>
 						<th scope="col">Activo Fijo</th>
 						<th scope="col">Serial</th>
+						<th scope="col">Editar</th>
+						<th scope="col">Imprimir</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -103,12 +101,21 @@ if (session_status() === PHP_SESSION_NONE) {
 						<td>DELL</td>
 						<td>CAM-234</td>
 						<td>SERIAL123</td>
-						<td><a class="btn btn-info boton-editar" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><img src="../assets/pencilIcon.svg" alt=""></a></td>
-						<td><button type="button" class="imprimir" id="print"><img src="../assets/imprimir.svg" alt=""></button></td>
+						<td>
+							<a class="btn btn-info boton-editar" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+								<img src="../assets/pencilIcon.svg" alt="" >
+							</a>
+						</td>
+						<td>
+							<button type="button" class="imprimir" id="print">
+								<img src="../assets/imprimir.svg" alt="">
+							</button>
+						</td>
 					</tr>
 				</tbody>
-			</table>
-			<!-- Modal que mostrará los datos del OCS y el boton de Mantenimiento -->
+			</table>								
+		
+			<!-- Modal 1 -->
 			<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
 				<div class="modal-dialog modal-xl modal-dialog-centered">
 					<div class="modal-content">
@@ -118,9 +125,9 @@ if (session_status() === PHP_SESSION_NONE) {
 						</div>
 						<div class="modal-body">
 							<div class="container mt-4">
+								<!-- Contenido del primer modal -->
 								<div class="mantenimiento">
 									<h6>Tipo De Mantenimiento</h6>
-									<br>
 									<div class="form-check form-check-inline">
 										<input class="form-check-input" type="radio" name="tipoMantenimiento" id="preventivo" value="preventivo">
 										<label class="form-check-label" for="preventivo">Preventivo</label>
@@ -130,23 +137,13 @@ if (session_status() === PHP_SESSION_NONE) {
 										<label class="form-check-label" for="correctivo">Correctivo</label>
 									</div>
 								</div>
-								<br>
-								<!-- Campos del formulario -->
 								<div id="camposGenerales">
-									<div class="ejecutor">
-										<h6>Ejecutor</h6>
-										<input type="text" placeholder="Responsable Mantenimiento" class="form-control" name="ejecutor">
-									</div>
-									<br>
-									<div class="date">
-										<h6>Fecha Mantenimiento</h6>
-										<input type="date" id="fecha" name="fecha" class="form-control">
-									</div>
-									<br>
-									<div class="observaciones">
-										<h6>Observaciones</h6>
-										<textarea name="observaciones" id="observaciones" class="form-control"></textarea>
-									</div>
+									<h6>Ejecutor</h6>
+									<input type="text" placeholder="Responsable Mantenimiento" class="form-control" name="ejecutor">
+									<h6>Fecha Mantenimiento</h6>
+									<input type="date" id="fecha" name="fecha" class="form-control">
+									<h6>Observaciones</h6>
+									<textarea name="observaciones" id="observaciones" class="form-control"></textarea>
 								</div>
 								<br>
 								<div id="camposCorrectivo" class="hidden">
@@ -166,25 +163,25 @@ if (session_status() === PHP_SESSION_NONE) {
 									</div>
 								</div>
 								<br>
-								<div class="modal-footer">
-									<button class="btn btn-primary">Enviar</button>
-								</div>
-
-								<div class="modal-footer">
-									<button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Hoja De Vida</button>
-								</div>
 							</div>
 						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary">Enviar</button>
+							<!--<button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Hoja De Vida</button>-->
+						</div>
 					</div>
-					<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+				</div>
+			</div>
+			<!--<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
 						<div class="modal-dialog modal-xl modal-dialog-centered">
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title" id="exampleModalToggleLabel2">Formato Hoja De Vida (PLACA DEL EQUIPO)</h5>
 									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
-								<div class="modal-body">
-									<table class="cb-tableizer">
+								<div class="modal-body">-->
+									<!-- Contenido del segundo modal -->
+									<!--<table class="cb-tableizer">
 										<thead>
 											<tr>
 												<td class="titulo-hdv">HOJA DE VIDA - EQUIPO DE COMPUTO</td>
@@ -192,34 +189,11 @@ if (session_status() === PHP_SESSION_NONE) {
 										</thead>
 										<tbody>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td class="titulo-hdv">DATOS DE USUARIO</td>
-											</tr>
-											<tr>
-												<td class="negrilla-titulo">Responsable</td>
 												<td>GTI</td>
-												<td></td>
-												<td class="negrilla-titulo">Proceso :</td>
 												<td>MANTENIMIENTO PREVENTIVO</td>
-												<td></td>
-												<td></td>
-												<td class="negrilla-titulo">Dirección IP:</td>
 												<td>172.26.40.146</td>
-												<td></td>
-												<td></td>
 											</tr>
+											
 											<tr>
 												<td class="negrilla-titulo">Nombre PC:</td>
 												<td>ACAM-DP274</td>
@@ -557,11 +531,11 @@ if (session_status() === PHP_SESSION_NONE) {
 											</tr>
 
 										</tbody>
-									</table>
+									</table>-->
 								</div>
-								<div class="modal-footer">
+								<!--<div class="modal-footer">
 									<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Regresar</button>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>

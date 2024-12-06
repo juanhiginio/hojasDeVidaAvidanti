@@ -37,9 +37,6 @@
                     <button id="Session" type="submit">Iniciar Sesión</button>
                     <br>
                     <br>
-                    <div id="new">
-                        ¿No has activado la cuenta?<a href="register.php" id="solicitar">Activar</a>
-                    </div>
                 </div>
             </form>
         </div>

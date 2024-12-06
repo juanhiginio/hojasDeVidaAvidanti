@@ -147,6 +147,7 @@ thead{
 /*Boton editar - Boton imprimir tabla modal*/
 .boton-editar {
     background-color: #488ad56d;
+    align-items: center ;
 }
 
 .boton-imprimir {
@@ -187,7 +188,7 @@ thead{
     width: 30%;
     height: 30%;
     padding: 5px;
-    border: 20px rgb(red, green, blue);
+    border: 20px;
     border-radius: 20px;
 
 }
