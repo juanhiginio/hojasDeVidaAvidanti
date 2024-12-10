@@ -95,24 +95,19 @@ if (session_status() === PHP_SESSION_NONE) {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">5468</th>
-						<td>Urgencias</td>
-						<td>DELL</td>
-						<td>CAM-234</td>
-						<td>SERIAL123</td>
-						<td>
-							<a class="btn btn-info boton-editar" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
-								<img src="../assets/pencilIcon.svg" alt="" >
-							</a>
-						</td>
-						<td>
-							<button type="button" class="imprimir" id="print">
-								<img src="../assets/imprimir.svg" alt="">
-							</button>
-						</td>
-					</tr>
-				</tbody>
+                    <?php foreach ($dispositivos as $dispositivo): ?>
+                        <tr>
+                            <th scope="row"><?php echo htmlspecialchars($dispositivo['id_registro']); ?></th>
+                            <td><?php echo 'DEBE VENIR DE LA DB DEL OCS'; ?></td>
+                            <td><?php echo htmlspecialchars($dispositivo['marca']); ?></td>
+                            <td><?php echo htmlspecialchars($dispositivo['activoFijo']); ?></td>
+                            <td><?php echo htmlspecialchars($dispositivo['serial']); ?></td>
+                            <td><a class="btn btn-info boton-editar" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><img src="../assets/pencilIcon.svg" alt=""></a></td>
+                            <td><button type="button" class="btn btn-info boton-imprimir" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <img src="../assets/imprimir.svg" alt=""></button></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
 			</table>								
 		
 			<!-- Modal 1 -->
