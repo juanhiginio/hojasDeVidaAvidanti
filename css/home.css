@@ -94,6 +94,21 @@ nav,#fluid{
     transform: scale(1.1); 
 }
 
+.contenedor-input {
+    width: 100%;
+    height: auto;
+    margin-top: 1.5%;
+    
+}
+#buscar{
+    width: 30%;
+    margin: 0 auto;
+}
+
+#listado {
+    padding: 0px 10px;
+}
+
 
 .container-data {
     margin-top: 1%;
@@ -184,12 +199,20 @@ thead{
     font-size: 16px;
 }
 
+.separacion {
+    margin-bottom: 20px;
+}
+
+.titulos-input {
+    font-weight: bold;
+}
+
 #fecha{
     width: 30%;
     height: 30%;
-    padding: 5px;
-    border: 20px;
-    border-radius: 20px;
+    padding: 3px 15px;
+    border: 1px solid black;
+    border-radius: 8px;
 
 }
 
@@ -197,11 +220,12 @@ thead{
     width: 40%;
     height: 30%;
     padding: 5px;
+    border: 1px solid black;
     border-radius: 10px;
 }
 #print:hover{
     background-color: #488ad5b5;
-    border: 0.5px rgb(10, 10, 68);
+    border: 0.5px rgba(10, 10, 68, 0.619);
     
 }
 

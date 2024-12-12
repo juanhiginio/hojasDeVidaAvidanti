@@ -19,7 +19,7 @@ try {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         $password_db = $user['contrasena'];
 
-        if ($password === $password_db) {
+        if (password_verify($password, $password_db)) {
             $_SESSION['id'] = $user['id_usuario'];
             $_SESSION['username'] = $user['usuario'];
             $_SESSION['name'] = $user['nombre'];

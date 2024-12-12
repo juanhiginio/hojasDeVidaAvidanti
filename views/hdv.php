@@ -1,3 +1,16 @@
+<?php
+include('../backend/ocs.php'); 
+$nombre = isset($_GET['nombre']) ? $_GET['nombre'] : null;
+
+$dispositivoSeleccionado = null;
+foreach ($ocs as $dispositivo) {
+    if ($dispositivo['activo'] == $nombre) {  // Cambié 'id' por 'activo' (nombre del dispositivo)
+        $dispositivoSeleccionado = $dispositivo;
+        break;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,6 +42,7 @@
     <table class="cb-table" class="avidanti">
 
         <tbody>
+
             <br>
             <tr>
                 <td class="titulo-hdv">HOJA DE VIDA  - EQUIPO DE COMPUTO</td>
@@ -58,7 +72,7 @@
                 <td></td>
                 <td></td>
                 <td class="negrilla-titulo">Dirección IP:</td>
-                <td>172.26.40.146</td>
+                <td><?php echo htmlspecialchars($dispositivo['ip']); ?></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -71,7 +85,7 @@
                 <td class="negrilla-titulo">Clave:</td>
                 <td>%ClinicaDiacorsas3000!</td>
                 <td class="negrilla-titulo">Usuario Dominio:</td>
-                <td>Murgencias05</td>
+                <td><?php echo htmlspecialchars($dispositivo['usuario']); ?></td>
                 <td class="negrilla-titulo">Contraseña:</td>
                 <td>Mavidanti2021</td>
             </tr>
@@ -89,52 +103,39 @@
                 <td></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
                 <td class="titulo-hdv">CONFIGURACION ACTUAL DE HARDWARE</td>
             </tr>
             <tr>
                 <td class="negrilla-titulo">Marca PC:</td>
-                <td>HP</td>
+                <td><?php echo htmlspecialchars($dispositivo['fabricante']); ?></td>
                 <td></td>
                 <td></td>
                 <td class="negrilla-titulo">Activo Fijo:</td>
                 <td>SIN PLACA</td>
                 <td></td>
                 <td class="negrilla-titulo">Marca Monitor:</td>
-                <td>LG</td>
+                <td><?php echo htmlspecialchars($dispositivo['fabricante']); ?></td>
                 <td class="negrilla-titulo">Activo Fijo:</td>
                 <td>CAM-2467</td>
             </tr>
             <tr>
                 <td class="negrilla-titulo">Modelo PC:</td>
-                <td>ELITEDESQ</td>
+                <td><?php echo htmlspecialchars($dispositivo['modelo']); ?></td>
                 <td></td>
                 <td></td>
                 <td class="negrilla-titulo">Serial PC:</td>
-                <td>MXL4451TWL</td>
+                <td><?php echo htmlspecialchars($dispositivo['serie']); ?></td>
                 <td></td>
                 <td class="negrilla-titulo">Modelo Monitor:</td>
-                <td>19EN33SA</td>
+                <td><?php echo htmlspecialchars($dispositivo['modelo']); ?></td>
                 <td class="negrilla-titulo">Serial Monitor:</td>
-                <td>301NDDMGT2098</td>
+                <td><?php echo htmlspecialchars($dispositivo['serie']); ?></td>
             </tr>
             <tr>
                 <td class="negrilla-titulo">Procesador</td>
-                <td>Intel(R) Core(TM) i5 </td>
+                <td><?php echo htmlspecialchars($dispositivo['procesador']); ?></td>
                 <td class="negrilla-titulo">Velocidad Ghz:</td>
-                <td>2.10GHz </td>
+                <td><?php echo htmlspecialchars($dispositivo['velocidad_mghz']); ?> </td>
                 <td class="negrilla-titulo">Serial Proc</td>
                 <td>N/A</td>
                 <td></td>
@@ -145,7 +146,7 @@
             </tr>
             <tr>
                 <td class="negrilla-titulo">Memoria RAM (Fisica)</td>
-                <td>6GB</td>
+                <td><?php echo htmlspecialchars($dispositivo['RAM']); ?></td>
                 <td class="negrilla-titulo">Velocidad Mb:</td>
                 <td>2400</td>
                 <td class="negrilla-titulo">Serial Mem.</td>
@@ -214,13 +215,13 @@
             </tr>
             <tr>
                 <td class="negrilla-titulo">Sistema Operativo:</td>
-                <td> Windows 10 pro </td>
+                <td><?php echo htmlspecialchars($dispositivo['sistema_operativo']); ?></td>
                 <td class="negrilla-titulo">Tipo de sistema:</td>
                 <td>Windows </td>
                 <td class="negrilla-titulo">Service Pack:</td>
                 <td></td>
                 <td class="negrilla-titulo">Licencia:</td>
-                <td></td>
+                <td><?php echo htmlspecialchars($dispositivo['licencia_SO']); ?></td>
                 <td></td>
                 <td class="negrilla-titulo">Plugins</td>
                 <td></td>
@@ -397,7 +398,6 @@
                 <td></td>
                 <td></td>
             </tr>
-
         </tbody>
     </table>
     <br>

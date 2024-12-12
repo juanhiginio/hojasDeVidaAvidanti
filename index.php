@@ -26,7 +26,7 @@
                     <h4 id="user" class="credentials">Usuario</h4>
                     <div class="input-container">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" placeholder="Ingresa tu correo" id="input_user" name="user">
+                        <input type="text" placeholder="Ingresa tu usuario" id="input_user" name="user">
                     </div>
                     <h4 id="password" class="credentials">Contraseña</h4>
                     <div class="input-container">

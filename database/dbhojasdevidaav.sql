@@ -15,7 +15,7 @@ CREATE TABLE `usuarios` (
     `id_usuario` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `nombre` VARCHAR(50) NOT NULL,
     `usuario` VARCHAR(25) NOT NULL,
-    `contrasena` VARCHAR(20) NOT NULL,
+    `contrasena` VARCHAR(255) NOT NULL,
     `id_rol` INT(10) NOT NULL,
 
     FOREIGN KEY (id_rol) REFERENCES roles(id_rol) ON DELETE CASCADE ON UPDATE CASCADE

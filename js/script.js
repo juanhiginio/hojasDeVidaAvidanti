@@ -1,28 +1,32 @@
-//Inicio botón de imprimir
-document.getElementById('print').addEventListener('click', () => {
-    fetch('../views/hdv.html')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al cargar el archivo HTML');
-            }
-            return response.text();
-        })
-        .then(htmlContent => {
-            const printWindow = window.open('', '', '');
-            
-            printWindow.document.open();
-            printWindow.document.write('');
-            printWindow.document.write(htmlContent); 
-            printWindow.document.close(); 
+document.querySelectorAll('.boton-imprimir').forEach(button => {
+    button.addEventListener('click', event => {
+        // Obtener la fila correspondiente al botón
+        const row = event.target.closest('tr');
+        const nombre = row.cells[1].textContent;  // Usar la columna del nombre 
 
-            printWindow.onload = () => {
-                printWindow.print();
-                printWindow.close(); 
-            };
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        fetch(`../views/hdv.php?nombre=${encodeURIComponent(nombre)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al cargar el archivo HTML');
+                }
+                return response.text();
+            })
+            .then(htmlContent => {
+                const printWindow = window.open('', '_blank');
+
+                printWindow.document.open();
+                printWindow.document.write(htmlContent);
+                printWindow.document.close();
+
+                printWindow.onload = () => {
+                    printWindow.print();
+                    printWindow.close();
+                };
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
 });
 
 //Calendario dashboard
@@ -63,3 +67,17 @@ document.getElementById('fecha').setAttribute('max', todayDate);
  // Agregar eventos para los radio buttons
  preventivoRadio.addEventListener('change', actualizarFormulario);
  correctivoRadio.addEventListener('change', actualizarFormulario);
+
+ //BUSCAR
+const filterinput = document.getElementById('buscar');
+const rows = document.querySelectorAll('tbody tr');
+
+filterinput.addEventListener('keyup',() =>{
+const filterText = filterinput.value.toLowerCase();
+
+rows.forEach(row =>{
+    const rowText = row.textContent.toLowerCase();
+    row.style.display = rowText.includes(filterText) ? '' : 'none';
+})
+
+})
